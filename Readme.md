@@ -2,7 +2,7 @@
 
 ## What's this?
 
-This is a mod that expands **Silksong's Archipelago Randomizer** (aka **Batsong**) and adds **17 new tools** intended to enhance or have an interesting relationship with the Archipelago experience.
+This is a mod that expands **Silksong's Archipelago Randomizer** (aka **Batsong**) and adds **16 new tools** intended to enhance or have an interesting relationship with the Archipelago experience.
 
 These new tools replace Silksong's filler items in the multiworld.
 
