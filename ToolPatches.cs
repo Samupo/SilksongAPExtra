@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
@@ -139,6 +140,90 @@ namespace SilksongAPExtra
             {
                 customTool.OnUsed();
             }
+        }
+
+        private static readonly AccessTools.FieldRef<HeroController, ToolItem> WillThrowToolField =
+            AccessTools.FieldRefAccess<HeroController, ToolItem>("willThrowTool");
+
+        private static readonly AccessTools.FieldRef<HeroController, double> CanThrowTimeField =
+            AccessTools.FieldRefAccess<HeroController, double>("canThrowTime");
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(HeroController), "CanThrowTool",
+            new Type[]
+            {
+                typeof(ToolItem),
+                typeof(AttackToolBinding),
+                typeof(bool)
+            })]
+        private static bool CanThrowToolPrefix(
+            ToolItem tool,
+            AttackToolBinding binding,
+            bool reportFailure,
+            ref bool __result)
+        {
+            if (!(tool is CustomToolItem customTool))
+            {
+                return true;
+            }
+
+            bool canUse = true;
+
+            if (tool.Type == ToolItemType.Red)
+            {
+                canUse = !tool.IsEmpty;
+            }
+
+            if (!canUse)
+            {
+                if (reportFailure)
+                {
+                    ToolItemManager.ReportBoundAttackToolFailed(binding);
+                    customTool.OnUsageFailed();
+                }
+
+                __result = false;
+                return false;
+            }
+
+            __result = true;
+            return false;
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(HeroController), "ThrowTool")]
+        private static bool ThrowToolPrefix(
+            HeroController __instance,
+            bool isAutoThrow)
+        {
+            ToolItem tool = WillThrowToolField(__instance);
+
+            if (!(tool is CustomToolItem customTool))
+            {
+                return true;
+            }
+
+            if (!isAutoThrow && Time.timeAsDouble < CanThrowTimeField(__instance))
+            {
+                return false;
+            }
+
+            AttackToolBinding? binding =
+                ToolItemManager.GetAttackToolBinding(tool);
+
+            if (binding == null)
+            {
+                return false;
+            }
+
+            customTool.OnUsed();
+
+            ToolItemManager.ReportBoundAttackToolUsed(binding.Value);
+            ToolItemManager.ReportBoundAttackToolUpdated(binding.Value);
+
+            WillThrowToolField(__instance) = null;
+
+            return false;
         }
     }
 }

@@ -18,6 +18,7 @@ namespace SilksongAPExtra
         public ToolItemType type;
         public string spritePath;
         public UsageOptions usage;
+        public int redToolBaseCount;
     }
 
     public class CustomToolItem : ToolItem
@@ -35,6 +36,7 @@ namespace SilksongAPExtra
         #region Harmony accessors
         private static readonly AccessTools.FieldRef<ToolItem, ToolItemType> TypeField = AccessTools.FieldRefAccess<ToolItem, ToolItemType>("type");
         private static readonly AccessTools.FieldRef<ToolItem, PlayerDataTest> AlternateUnlockedTestField = AccessTools.FieldRefAccess<ToolItem, PlayerDataTest>("alternateUnlockedTest");
+        private static readonly AccessTools.FieldRef<ToolItem, int> BaseStorageAmountField = AccessTools.FieldRefAccess<ToolItem, int>("baseStorageAmount");
 
         public ToolItemType ToolType
         {
@@ -62,6 +64,11 @@ namespace SilksongAPExtra
                 tool.inventorySprite = Utils.LoadSprite(source, "Placeholder.png");
             }
 
+            if (data.type == ToolItemType.Red)
+            {
+                BaseStorageAmountField(tool) = data.redToolBaseCount;
+            }
+
             AlternateUnlockedTestField(tool) = new PlayerDataTest();
             return tool;
         }
@@ -75,6 +82,13 @@ namespace SilksongAPExtra
         public override Sprite GetHudSprite(IconVariants iconVariant)
         {
             return null;
+        }
+
+        public virtual void DecreaseAmount(int amount)
+        {
+            var saveData = this.SavedData;
+            saveData.AmountLeft -= amount;
+            this.SavedData = saveData;
         }
 
         public virtual void OnPlayerHitByEnemy(ref int damageAmount, ref bool shouldContinue, ref GameObject go) { }

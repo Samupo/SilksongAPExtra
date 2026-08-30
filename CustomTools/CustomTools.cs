@@ -48,6 +48,8 @@ namespace SilksongAPExtra.CustomTools
             anchorSpoolData.toolNameID = "ANCHOR_SPOOL";
             anchorSpoolData.toolDescriptionID = "ANCHOR_SPOOL_DESC";
             anchorSpoolData.spritePath = "AnchorSpool.png";
+            anchorSpoolData.redToolBaseCount = 2;
+            anchorSpoolData.usage = new UsageOptions();
             anchorSpool = CustomToolItem.CreateTool<AnchorSpool>(plugin, anchorSpoolData);
             CustomToolManager.RegisterTool(anchorSpool);
 
@@ -57,6 +59,8 @@ namespace SilksongAPExtra.CustomTools
             moorbladeData.toolNameID = "MOORBLADE";
             moorbladeData.toolDescriptionID = "MOORBLADE_DESC";
             moorbladeData.spritePath = "Moorblade.png";
+            moorbladeData.redToolBaseCount = 4;
+            moorbladeData.usage = new UsageOptions();
             moorblade = CustomToolItem.CreateTool<Moorblade>(plugin, moorbladeData);
             CustomToolManager.RegisterTool(moorblade);
 
