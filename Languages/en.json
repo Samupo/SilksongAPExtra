@@ -1,8 +1,6 @@
 {
 	"ANCHOR_SPOOL": "Anchor Spool",
-	"ANCHOR_SPOOL_DESC": "NOT IMPLEMENTED\n\nPlaces a Silk anchor on your position that you can travel back to.",
-	"MOORBLADE": "Moorblade",
-	"MOORBLADE_DESC": "NOT IMPLEMENTED\n\nPThrows a projectile that comes back at you.",
+	"ANCHOR_SPOOL_DESC": "Places a Silk anchor on your position that you can travel back to.",
 	"BEAST_HOOK": "Beast Hook",
 	"BEAST_HOOK_DESC": "The power of the Warrior Beastfly courses through this Tool.\n\nProvides lifesteal when you are on critical Health at the cost of some Silk. Has a cooldown of 15 seconds.",
 	"DRIFTER_WINGS": "Drifter Wings",

@@ -80,9 +80,6 @@ Yes. The modified AP World exposes an `extra_tools` option that allows you to ch
 **Anchor Spool**
 Creates a Silk anchor at your current position. Using the tool again teleports you back to it.
 
-**Moorblade**
-Shoots a boomerang-like projectile that damages enemies and can be pogoed.
-
 ---
 
 ### 🔵 Blue Tools

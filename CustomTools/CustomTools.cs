@@ -16,7 +16,6 @@ namespace SilksongAPExtra.CustomTools
     {
         // Red
         public static AnchorSpool anchorSpool;
-        public static Moorblade moorblade;
 
         // Blue
         public static BeastHook beastHook;
@@ -52,17 +51,6 @@ namespace SilksongAPExtra.CustomTools
             anchorSpoolData.usage = new UsageOptions();
             anchorSpool = CustomToolItem.CreateTool<AnchorSpool>(plugin, anchorSpoolData);
             CustomToolManager.RegisterTool(anchorSpool);
-
-            CustomToolItemData moorbladeData = new CustomToolItemData();
-            moorbladeData.type = ToolItemType.Red;
-            moorbladeData.userFriendlyName = "Moorblade";
-            moorbladeData.toolNameID = "MOORBLADE";
-            moorbladeData.toolDescriptionID = "MOORBLADE_DESC";
-            moorbladeData.spritePath = "Moorblade.png";
-            moorbladeData.redToolBaseCount = 4;
-            moorbladeData.usage = new UsageOptions();
-            moorblade = CustomToolItem.CreateTool<Moorblade>(plugin, moorbladeData);
-            CustomToolManager.RegisterTool(moorblade);
 
             // Blue
             CustomToolItemData beastHookData = new CustomToolItemData();
