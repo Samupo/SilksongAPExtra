@@ -108,8 +108,9 @@ namespace SilksongAPExtra
         public virtual void OnUpdate() { }
         public virtual void OnFixedUpdate() { }
 
-        public virtual void OnEquip() { }
-        public virtual void OnUnequip() { }
+        // Not implemented
+        //public virtual void OnEquip() { }
+        //public virtual void OnUnequip() { }
 
         public virtual void OnNeedolinStart() { }
         public virtual void OnNeedolinEnd() { }
