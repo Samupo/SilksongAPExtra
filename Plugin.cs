@@ -47,27 +47,26 @@ namespace SilksongRandomizer
             }
         }
 
-        IEnumerator Start()
+        void Start()
         {
-            // Wait for Silksong initialization
-            while (ToolItemManager.Instance == null) yield return null;
-            while (SaveState.Instance == null) yield return null;
-
-            // Register new tools
             CustomTools.Initialize(this);
         }
 
         void Update()
         {
-            foreach (CustomToolItem tool in CustomToolManager.GetEquippedTools())
+            if (ToolItemManager.Instance != null)
             {
-                try
+                CustomToolManager.TryPatchTools(ToolItemManager.Instance);
+                foreach (CustomToolItem tool in CustomToolManager.GetEquippedTools())
                 {
-                    tool.OnUpdate();
-                }
-                catch (Exception ex)
-                {
-                    Log.LogError(ex);
+                    try
+                    {
+                        tool.OnUpdate();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.LogError(ex);
+                    }
                 }
             }
         }
