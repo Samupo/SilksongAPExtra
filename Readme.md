@@ -55,8 +55,7 @@ Yes. The modified AP World exposes an `extra_tools` option that allows you to ch
 
 ## Known Issues
 
-* If you received an AP Extra tool while offline, you'll receive an **"Item not found"** message when connecting. You can click **Reconnect** and continue playing as normal.
-* Quitting back to main menu makes the custom tools disappear until the game is restarted.
+* All known issues have been corrected as of writing this.
 
 ---
 
