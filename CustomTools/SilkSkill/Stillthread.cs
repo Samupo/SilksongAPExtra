@@ -29,9 +29,12 @@ namespace SilksongAPExtra.CustomTools.SilkSkill
 
         public override void OnUsed()
         {
-            HeroController.instance.TakeSilk(4, SilkSpool.SilkTakeSource.ActiveUse);
-            active = true;
-            activeTime = 0f;
+            if (PlayerData.instance.silk >= 4)
+            {
+                HeroController.instance.TakeSilk(4, SilkSpool.SilkTakeSource.ActiveUse);
+                active = true;
+                activeTime = 0f;
+            }
         }
     }
 }

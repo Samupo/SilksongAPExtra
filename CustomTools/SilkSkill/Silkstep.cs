@@ -16,11 +16,14 @@ namespace SilksongAPExtra.CustomTools.SilkSkill
 
         public override void OnUsed()
         {
-            HeroController.instance.TakeSilk(4, SilkSpool.SilkTakeSource.ActiveUse);
-            DoubleJumpedField(HeroController.instance) = false;
-            AirDashedField(HeroController.instance) = false;
-            HeroController.instance.doubleJumpEffectPrefab.Spawn(HeroController.instance.transform);
-            jumpTime = 0.125f;
+            if (PlayerData.instance.silk >= 4)
+            {
+                HeroController.instance.TakeSilk(4, SilkSpool.SilkTakeSource.ActiveUse);
+                DoubleJumpedField(HeroController.instance) = false;
+                AirDashedField(HeroController.instance) = false;
+                HeroController.instance.doubleJumpEffectPrefab.Spawn(HeroController.instance.transform);
+                jumpTime = 0.125f;
+            }
         }
 
         public override void OnFixedUpdate()
