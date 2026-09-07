@@ -10,6 +10,8 @@ These new tools replace Silksong's filler items in the multiworld.
 
 ## Manual Installation
 
+Open the folder where the game is installed. Make sure BepInEx and Silksong Archipelago Randomizer are both installed.
+
 The mod must be installed in the `BepInEx/plugins` folder.
 
 1. Extract the mod ZIP files from the release page.
