@@ -22,6 +22,22 @@ BepInEx/plugins/silksong_modding-I18N
 
 The modified **AP World** also needs to be installed for generations to include the new tools. Enable the `extra_tools` option in your YAML.
 
+## Cogfly Installation
+
+Once you have a profile selected in Cogfly, click Open Profile Folder.
+
+The mod must be installed in the `BepInEx/plugins` folder.
+
+1. Extract the mod ZIP files from the release page.
+2. Copy the contents so that you have the following folders:
+
+```text
+BepInEx/plugins/SilksongAPExtra
+BepInEx/plugins/silksong_modding-I18N
+```
+
+The modified **AP World** also needs to be installed for generations to include the new tools. Enable the `extra_tools` option in your YAML.
+
 ---
 
 ## Why isn't it available on X mod loader?
